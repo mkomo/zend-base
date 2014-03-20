@@ -1,0 +1,24 @@
+<div class="account_header">
+<?php 
+$this->username = ZFBase_User::getUserName();
+?>
+<?php if($this->username): ?>
+	logged in as <b><?php echo $this->username; ?></b>
+	  	<a href="<?php echo $this->url(
+	      array(
+	          'controller' => 'auth',
+	          'action'     => 'logout'
+	      )) ?>">log out</a>  
+<?php else: ?>
+  <a href="<?php echo $this->url(
+      array(
+          'controller' => 'auth',
+          'action'     => 'login'
+      )) ?>">log in</a> | 
+  <a href="<?php echo $this->url(
+      array(
+          'controller' => 'auth',
+          'action'     => 'create-user'
+      )) ?>">create account</a>  
+<?php endif; ?>
+</div>

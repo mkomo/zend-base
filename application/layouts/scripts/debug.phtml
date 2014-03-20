@@ -1,0 +1,11 @@
+<?php if ($this->debug): ?>
+<pre>
+<?php echo $this->debug ?>
+</pre>
+<?php endif; ?>
+
+<?php if (ZFBase_Benchmark::hasTimers()): ?>
+<pre>
+<?php echo ZFBase_Benchmark::getInstance(); ?>
+</pre>
+<?php endif; ?>

@@ -1,0 +1,13 @@
+<?php 
+echo '<div id="flash_messages">';
+foreach ($this->messages as $label=>$messages) {
+	if (count($messages)) {
+		echo '<div class="'.$label.' messages">';
+		foreach ($messages as $message) {
+			echo '<div class="message">'.$message.'</div>';
+		}
+		echo '</div>';
+	}
+}
+echo '</div>';
+?>

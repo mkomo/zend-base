@@ -1,0 +1,25 @@
+.account_header {
+	border-bottom: 1px solid #999; 
+	margin: 0px 5px 15px 0px;
+	padding: 5px;
+}
+
+#flash_messages .messages{
+	border: 1px solid #999;
+	margin: 5px;
+	padding: 5px;
+}
+
+#flash_messages .error{
+	border-color: #900;
+	background-color: #f99;
+}
+
+#flash_messages .success{
+	border-color: #090;
+	background-color: #9f9;
+}
+
+form ul.errors{
+	color: #900;	
+}

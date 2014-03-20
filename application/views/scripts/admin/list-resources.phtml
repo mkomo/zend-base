@@ -1,0 +1,47 @@
+<h2>Roles required for each resource</h2>
+<table>
+	<tr>
+		<th>module</th>
+		<th>controller</th>
+		<th>action</th>
+		<th>roles required</th>
+		<th></th>
+		<th>all roles required <br/>(including inherited)</th>
+	</tr>
+	<?php foreach ($this->resourceTree->walkNodes() as $node): 
+		$resource = $node->getRoot();
+	?>
+	<tr>
+		<?php if ($resource->isModule()):?>
+			<td><?php echo $resource->module?></td>
+			<td></td>
+			<td></td>
+		<?php elseif ($resource->isController()): ?>
+			<td>	&#8627; </td>
+			<td><?php echo $resource->controller?></td>
+			<td></td>
+		<?php elseif ($resource->isAction()): ?>
+			<td></td>
+			<td>	&#8627; </td>
+			<td><?php echo $resource->action?></td>
+		<?php endif ?>
+		<td>
+			<?php if (sizeof($node->getRolesRequired())): 
+				echo implode(', ',$node->getRolesRequired());
+			else: ?>	
+			 	<span  style="color: #999;">(none)</span>
+			<?php endif ?>
+			<a href="<?php echo $this->url(array(
+		          'controller' => 'admin',
+		          'action'     => 'list-roles-for-resource',
+		          'resource'  =>  urlencode($resource->getUrl()) 
+		      )) ?>">[edit]</a></td>
+		<td>
+			
+		</td>
+		<td>
+			<?php echo implode(', ',$node->getAllRolesRequired())?>
+		</td>
+	</tr>
+	<?php endforeach; ?>
+</table>

@@ -1,0 +1,15 @@
+<?php if($this->username): ?>
+	welcome <b><?php echo $this->username; ?></b>! 
+	<?php if(sizeof($this->roles) == 0): ?>
+		you have no roles.
+	<?php else: ?>
+		you have the following roles:
+	 	<ul>
+	    <?php foreach ($this->roles as $role): ?>
+	    	<li><?php echo $role; ?></li>
+	    <?php endforeach; ?>
+	 	</ul>
+	<?php endif; ?>
+<?php else: ?>
+  You are not currently logged in.
+<?php endif; ?>

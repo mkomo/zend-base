@@ -1,0 +1,18 @@
+<h2>Roles for resource <?php echo $this->resource ?></h2>
+<form method="post">
+<table>
+    <tr>
+    	<th></th>
+	    <th>id</th>
+	    <th>role name</th>
+	</tr>	
+    <?php foreach ($this->roles as $role): ?>
+    <tr>
+    	<td><INPUT TYPE="checkbox" NAME="roles[<?php echo $role->id ?>]" <?php if (in_array($role->id, $this->roleIdsRequired)): echo "CHECKED"; endif?>/></td>
+	    <td><?php echo $role->id ?></td>
+	    <td><?php echo $this->escape($role->name) ?></td>
+	</tr>
+    <?php endforeach; ?>
+</table>
+<input value="update" type="submit"/>
+</form>

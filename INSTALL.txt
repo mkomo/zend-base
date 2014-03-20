@@ -1,0 +1,33 @@
+# move to the base directory of the project
+cd zend-base/
+
+# if you do not have a copy of the zend framework, use the following script:
+./config/get-zf.sh 
+
+# if you are creating a new database schema and database user for this project, use the startup.sql:
+mysql -uroot -p < ./config/startup.sql
+
+# run the setup script
+php setup.php
+
+# add the following to your httpd.conf
+#sudo nano /etc/apache2/httpd.conf
+NameVirtualHost 127.0.0.1:8080
+Listen 127.0.0.1:8080
+
+<VirtualHost 127.0.0.1:8080>
+    DocumentRoot /path/to/zend-base/public
+
+    SetEnv APPLICATION_ENV "development"
+
+    <Directory /path/to/zend-base/public>
+        DirectoryIndex index.php
+        AllowOverride All
+        Order allow,deny
+        Allow from all
+    </Directory>
+
+</VirtualHost>
+
+# restart apache
+sudo /etc/init.d/apache2 restart

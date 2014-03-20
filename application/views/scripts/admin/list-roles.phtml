@@ -1,0 +1,29 @@
+<h2>Roles</h2>
+<form method="post" action="<?php echo $this->url(array(
+          'controller' => 'admin',
+          'action'     => 'delete-roles'
+      )) ?>">
+<table>
+    <tr>
+    	<th></th>
+	    <th>id</th>
+	    <th>role name</th>
+	</tr>	
+    <?php foreach ($this->roles as $role): ?>
+    <tr>
+    	<td><INPUT TYPE="checkbox" NAME="roles[<?php echo $role->id ?>]" VALUE=""/></td>
+	    <td><?php echo $role->id ?></td>
+	    <td><?php echo $this->escape($role->name) ?></td>
+	</tr>
+    <?php endforeach; ?>
+</table>
+<input value="delete" type="submit"/>
+</form>
+<form method="post" action="<?php echo $this->url(array(
+          'controller' => 'admin',
+          'action'     => 'add-role'
+      )) ?>">
+<label for="rolename">Add role:</label>
+<input type="text" name="rolename">
+<input value="add role" type="submit"/>
+</form>
